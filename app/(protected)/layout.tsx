@@ -6,9 +6,9 @@ interface ProtectedLayoutProps {
 
 const ProtectedLayout = ({ children }: ProtectedLayoutProps) => {
     return (
-        <div className="h-full w-full flex flex-col gap-y-10">
+        <div className="h-full w-full flex flex-col">
             <Navbar />
-            <div className="flex-grow pt-16">
+            <div className="flex-grow pt-24">
                 { children }
             </div>
         </div>

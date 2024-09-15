@@ -53,10 +53,7 @@ export const RegisterForm = () => {
     };
 
     return (
-        <CardWrapper
-            headerLabel="Create an account"
-            backButtonLabel="Already have an account?"
-            backButtonHref="/auth/login">
+        <div className="grid gap-4 py-4">
             <Form {...form}>
                 <form 
                     onSubmit={form.handleSubmit(onSubmit)}
@@ -131,6 +128,6 @@ export const RegisterForm = () => {
                     </Button>
                 </form>
             </Form>
-        </CardWrapper>
+        </div>
     )
 }

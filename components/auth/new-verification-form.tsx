@@ -21,7 +21,7 @@ export const NewVerificationForm = () => {
         // error only on localhost because it will be call twice, the user has email verified 
         // but token doesn't exist anymore on database
         if(!token) {
-            setError("Le token n'existe pas");
+            setError("Token doesn't exist");
             return;
         }
 
@@ -31,7 +31,7 @@ export const NewVerificationForm = () => {
                 setError(data.error);
             })
             .catch(() => {
-                setError("Une erreur est survenue!");
+                setError("Something went wrong");
             });
     }, [token, success, error]);
 
@@ -41,9 +41,9 @@ export const NewVerificationForm = () => {
 
     return (
         <CardWrapper
-            headerLabel="Confirmation de votre compte"
+            headerLabel="Confirming your account"
             backButtonHref="/auth/login"
-            backButtonLabel="Retourner à la page de login"
+            backButtonLabel="Return to login page"
         >
             <div className="flex items-center w-full justify-center">
                 {!success && !error && (

@@ -14,16 +14,12 @@ export const RoleGate = ({
     allowedRole
 }: RoleGateProps) => {
     const role = useCurrentRole();
+    const hasRequiredRole = role === allowedRole;
 
-    if(role !== allowedRole) {
-        return (
-            <FormError message="You do not have permission to view this content!" />
-        )
-    }
-
-    return (
+    return hasRequiredRole 
+        ? 
         <>
             {children}
-        </>
-    )
+        </> 
+        : null;
 }

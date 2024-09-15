@@ -26,7 +26,7 @@ export const login = async (
     const validateFields = LoginSchema.safeParse(values);
 
     if(!validateFields.success) {
-        return { error: "Champs invalides!" };
+        return { error: "Invalid fields" };
     }
 
     const { email, password, code } = validateFields.data;
@@ -45,7 +45,7 @@ export const login = async (
             verificationToken.token
         );
 
-        return { success : "Vérifiez votre mail et cliquez sur le lien pour confirmer votre inscription." }
+        return { success : "Check your email and click the link to confirm your registration" }
     }
 
     if (existingUser.isTwoFactorEnabled && existingUser.email) {
@@ -53,13 +53,13 @@ export const login = async (
             const twoFactorToken = await getTwoFactorTokenByEmail(existingUser.email);
 
             if(!twoFactorToken || twoFactorToken.token !== code) {
-                return { error: "Invalid code!"};
+                return { error: "Invalid code"};
             }
 
             const hasExpired = new Date(twoFactorToken.expires) < new Date();
             
             if(hasExpired) {
-                return { error: "Code expired!"};
+                return { error: "Code expired"};
             }
 
             await db.twoFactorToken.delete({
@@ -96,7 +96,7 @@ export const login = async (
             password,
             redirectTo: callbackUrl || DEFAULT_LOGIN_REDIRECT
         })
-        return { success: "Connexion réussie!" };
+        return { success: "Connection successful" };
     } catch (error) {
         if (error instanceof AuthError) {
             switch(error.type) {

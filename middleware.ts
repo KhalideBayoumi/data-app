@@ -6,20 +6,21 @@ import {
     DEFAULT_LOGIN_REDIRECT,
     apiAuthPrefix,
     authRoutes,
-    publicRoutes
+    publicRoutes,
+    adminRoutes
 } from "@/routes";
-import next from "next";
-
+import { UserRole } from "@prisma/client";
 
 const { auth } = NextAuth(authConfig);
  
-export default auth((req) => {
+export default auth(async (req) => {
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
 
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
+  const isAdminRoute = adminRoutes.includes(nextUrl.pathname);
 
   if(isApiAuthRoute) {
     return null;
@@ -47,6 +48,18 @@ export default auth((req) => {
         nextUrl
       )
     );
+  }
+
+  if (isLoggedIn && isAdminRoute) {
+    const { currentUser } = await import("@/lib/auth");
+    
+    const user = await currentUser();
+
+    if (user?.role !== UserRole.ADMIN) {
+      return NextResponse.redirect(new URL("/access-denied", nextUrl));
+    }
+
+    return null;
   }
 
   return null;
