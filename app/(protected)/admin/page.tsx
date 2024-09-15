@@ -106,11 +106,11 @@ const AdminPage = async () => {
                                         <MoreHorizontal className="h-4 w-4" />
                                     </Button>
                                     </DropdownMenuTrigger>
-                                    <DropdownMenuContent align="end">
-                                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                    <DropdownMenuItem>View details</DropdownMenuItem>
-                                    <DropdownMenuItem>Edit user</DropdownMenuItem>
-                                    <DropdownMenuItem>Delete user</DropdownMenuItem>
+                                    <DropdownMenuContent align="end" className="shadow-lg">
+                                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                                        <DropdownMenuItem>View details</DropdownMenuItem>
+                                        <DropdownMenuItem>Edit user</DropdownMenuItem>
+                                        <DropdownMenuItem>Delete user</DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
                                 </TableCell>

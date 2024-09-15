@@ -14,7 +14,6 @@ import {
   Dialog,
   DialogContent,
 } from "@/components/ui/dialog"
-import router from 'next/router';
 
 interface Company {
   company_name: string;

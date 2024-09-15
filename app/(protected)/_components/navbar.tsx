@@ -38,9 +38,9 @@ export const Navbar = () => {
                         Dashboard
                     </Link>
                     <Link
-                        href="#"
+                        href="/analyse"
                         className={`transition-colors hover:text-foreground ${
-                            pathname === "#" ? "text-foreground" : "text-muted-foreground"
+                            pathname.startsWith("/analyse") ? "text-foreground" : "text-muted-foreground"
                         }`}
                     >
                         Analyse
@@ -104,7 +104,9 @@ export const Navbar = () => {
                             </Link>
                             <Link
                                 href="/analyse"
-                                className="text-muted-foreground hover:text-foreground"
+                                className={`hover:text-foreground ${
+                                    pathname.startsWith("/analyse") ? "text-foreground" : "text-muted-foreground"
+                                }`}
                             >
                                 Analyse
                             </Link>
