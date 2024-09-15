@@ -13,10 +13,12 @@ import Logo from "@/components/logo";
 import { RoleGate } from "@/components/auth/role-gate";
 import { UserRole } from "@prisma/client";
 import CompanySearch from "./company-search";
+import { useState } from "react";
 
 export const Navbar = () => {
     const pathname = usePathname();
-
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    
     return (
         <div className="fixed top-0 left-0 right-0 z-50 border-b">
             <header className="flex h-16 items-center gap-4 bg-background max-w-[1440px] mx-auto">
@@ -101,7 +103,7 @@ export const Navbar = () => {
                                 Dashboard
                             </Link>
                             <Link
-                                href="#"
+                                href="/analyse"
                                 className="text-muted-foreground hover:text-foreground"
                             >
                                 Analyse
@@ -137,11 +139,18 @@ export const Navbar = () => {
                         </nav>
                     </SheetContent>
                 </Sheet>
-                <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-                    <CompanySearch />
-                    {/*<ThemeToggle />*/}
+                <div className="flex items-center gap-4 ml-auto">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setIsSearchOpen(true)}
+                    >
+                        <Search className="h-5 w-5" />
+                        <span className="sr-only">Open search</span>
+                    </Button>
+                    <UserButton />
                 </div>
-                <UserButton />
+                <CompanySearch isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
             </header>
         </div>
     )
