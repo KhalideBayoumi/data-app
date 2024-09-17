@@ -25,7 +25,7 @@ export const settings = async (
     }
 
     if(user.isOAuth) { // we never send this information if the user comes from providers
-        values.email = undefined;
+        (values as any).email = undefined;
         values.password = undefined;
         values.newPassword = undefined;
         values.isTwoFactorEnabled = undefined;
