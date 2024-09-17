@@ -71,6 +71,7 @@ const CompanySearch = ({ isOpen, onClose }: CompanySearchProps) => {
 
   const filteredCompanies = useMemo(() => {
     if (searchTerm === "") return companies;
+
     return companies.filter(company =>
       company.company_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -79,6 +80,7 @@ const CompanySearch = ({ isOpen, onClose }: CompanySearchProps) => {
   const handleCompanySelect = (company: Company) => {
     const ticker = company.ticker.split(' ')[0]; // only the number
     router.push(`/analyse/companies/${ticker}`);
+    setSearchTerm("");
     onClose();
   };
   

@@ -3,7 +3,7 @@
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useTransition, useState } from "react";
+import { useTransition, useState, useEffect } from "react";
 import {
     Select,
     SelectContent,
@@ -50,8 +50,24 @@ const SettingsPage = () => {
             newPassword: undefined,
             role: user?.role || undefined,
             isTwoFactorEnabled: user?.isTwoFactorEnabled || undefined
-        }
+        },
+        mode: "onChange" 
     });
+
+    const { watch, setValue } = form
+
+    const password = watch("password");
+    const newPassword = watch("newPassword");
+
+    useEffect(() => {
+        if((password == "" || password == undefined) &&
+            (newPassword == "" || newPassword == undefined) ) {
+            setValue("password", undefined, { shouldValidate: true });
+            setValue("newPassword", undefined, { shouldValidate: true });
+            form.clearErrors("password");
+            form.clearErrors("newPassword");
+        }
+    }, [password, newPassword, form]);
 
     const onSubmit = (values: z.infer<typeof SettingsSchema>) => {
         startTransition(() => {

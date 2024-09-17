@@ -36,15 +36,21 @@ export const NewPasswordSchema = z.object({
 });
 
 export const SettingsSchema = z.object({
-    name : z.optional(z.string()),
+    name: z.string().min(1, {
+        message: "Name is required"
+    }),
     isTwoFactorEnabled: z.optional(z.boolean()),
     role: z.enum([UserRole.ADMIN, UserRole.USER]),
-    email: z.optional(z.string().email()),
+    email: z.string().email({
+        message: "Email is required"
+    }),
     password: z.optional(z.string().min(6)),
     newPassword: z.optional(z.string().min(6)),
 })
     .refine((data) => {
-        if(data.password && !data.newPassword) {
+        if(data.password && 
+            (data.newPassword == "" || data.newPassword == undefined)
+        ) {
             return false;
         }
 
@@ -54,7 +60,9 @@ export const SettingsSchema = z.object({
         path: ["newPassword"]
     })
     .refine((data) => {
-        if(!data.password && data.newPassword) {
+        if((data.password == "" || data.password == undefined) && 
+            data.newPassword
+        ) {
             return false;
         }
 
