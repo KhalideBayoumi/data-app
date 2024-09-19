@@ -18,6 +18,10 @@ const sidebarNavItems = [
     title: "Display",
     href: "/settings/display",
   },
+  {
+    title: "My License",
+    href: "/settings/license",
+  }
 ];
 
 interface SettingsLayoutProps {

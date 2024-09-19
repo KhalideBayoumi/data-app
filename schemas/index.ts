@@ -33,6 +33,10 @@ export const NewPasswordSchema = z.object({
     password : z.string().min(6, {
         message: "Minimum 6 characters is required"
     }),
+    confirmPassword: z.string()
+}).refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
 });
 
 export const SettingsSchema = z.object({
@@ -71,3 +75,13 @@ export const SettingsSchema = z.object({
         message: "Password is required",
         path: ["password"]
     })
+    .refine((data) => {
+        if (data.password && data.newPassword && data.password === data.newPassword) {
+            return false;
+        }
+    
+        return true;
+    }, {
+        message: "New password must be different from the current password",
+        path: ["newPassword"]
+    });
