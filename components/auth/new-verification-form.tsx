@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { BeatLoader } from "react-spinners";
 import { useSearchParams } from "next/navigation";
 
@@ -12,28 +12,42 @@ import { FormSuccess } from "@/components/form-success";
 export const NewVerificationForm = () => {
     const [error, setError] = useState<string | undefined>();
     const [success, setSuccess] = useState<string | undefined>();
+    const [isPending, setIsPending] = useState(true);
+    const verificationAttempted = useRef(false);
 
     const searchParams = useSearchParams();
-
-    const token = searchParams.get("token");
+    const tokenRef = useRef(searchParams.get("token"));
 
     const onSubmit = useCallback(() => {
-        // error only on localhost because it will be call twice, the user has email verified 
-        // but token doesn't exist anymore on database
-        if(!token) {
-            setError("Token doesn't exist");
+        // on localhost it will be called twice, user has verified his email
+        // but the token no longer exists in the database.
+        // to avoid this, have state changes and display errors, we run the method only once
+        
+        if (verificationAttempted.current || !tokenRef.current) {
+            setIsPending(false);
             return;
         }
 
-        newVerification(token)
+        verificationAttempted.current = true;
+
+        newVerification(tokenRef.current)
             .then((data) => {
-                setSuccess(data.success);
-                setError(data.error);
+                setTimeout(() => {
+                    if (data.success) {
+                        setSuccess(data.success);
+                    } else {
+                        setError(data.error);
+                    }
+                    setIsPending(false);
+                }, 1000);
             })
             .catch(() => {
-                setError("Something went wrong");
+                setTimeout(() => {
+                    setError("Something went wrong");
+                    setIsPending(false);
+                }, 1000);
             });
-    }, [token, success, error]);
+    }, []);
 
     useEffect(() => {
         onSubmit();
@@ -46,11 +60,14 @@ export const NewVerificationForm = () => {
             backButtonLabel="Return to login page"
         >
             <div className="flex items-center w-full justify-center">
-                {!success && !error && (
+                {isPending ? (
                     <BeatLoader />
+                ) : (
+                    <>
+                        {success && <FormSuccess message={success} />}
+                        {error && <FormError message={error} />}
+                    </>
                 )}
-                <FormSuccess message={success} />
-                <FormError message={error} />
             </div>
         </CardWrapper>
     )

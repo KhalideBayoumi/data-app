@@ -1,4 +1,4 @@
-"use sever";
+"use server";
 
 import * as z from "zod";
 
@@ -44,14 +44,21 @@ export const newPassword = async (
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await db.user.update({
-        where: {id: existingUser.id },
-        data: { password: hashedPassword }
-    });
+    try {
+        await db.$transaction(async (trx) => {
+            await trx.user.update({
+                where: { id: existingUser.id },
+                data: { password: hashedPassword }
+            });
 
-    await db.passwordResetToken.delete({
-        where: { id: existingToken.id }
-    });
+            await trx.passwordResetToken.delete({
+                where: { id: existingToken.id }
+            });
+        });
 
-    return { success: "Password updated!" };
+        return { success: "Password updated successfully. You will be redirected..." };
+    } catch (error) {
+        console.error("Error updating password:", error);
+        return { error: "Failed to update password. Please try again." };
+    }
 }

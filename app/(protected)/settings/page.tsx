@@ -3,7 +3,7 @@
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useTransition, useState, useEffect } from "react";
+import { useTransition, useState, useEffect, useRef } from "react";
 import {
     Select,
     SelectContent,
@@ -31,12 +31,17 @@ import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { UserRole } from "@prisma/client";
 import { Separator } from "@/components/ui/separator";
+import { Loader2 } from "lucide-react";
 
 const SettingsPage = () => {
     const user = useCurrentUser();
 
     const [error, setError] = useState<string | undefined>();
     const [success, setSuccess] = useState<string | undefined>();
+    const [showContent, setShowContent] = useState(false);
+
+    const passwordRef = useRef<HTMLInputElement>(null);
+    const newPasswordRef = useRef<HTMLInputElement>(null);
 
     const { update } = useSession();
     const [isPending, startTransition] = useTransition();
@@ -54,22 +59,35 @@ const SettingsPage = () => {
         mode: "onChange" 
     });
 
-    const { watch, setValue } = form
+    const { watch, setValue } = form;
 
     const password = watch("password");
     const newPassword = watch("newPassword");
 
     useEffect(() => {
-        if((password == "" || password == undefined) &&
-            (newPassword == "" || newPassword == undefined) ) {
+        //avoids having the password field pre-filled by the browser
+        const timer = setTimeout(() => {
+            setShowContent(true);
+            if (passwordRef.current) passwordRef.current.value = '';
+            if (newPasswordRef.current) newPasswordRef.current.value = '';
+        }, 100); // 100ms delay
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        if((password === "" || password === undefined) &&
+            (newPassword === "" || newPassword === undefined) ) {
             setValue("password", undefined, { shouldValidate: true });
             setValue("newPassword", undefined, { shouldValidate: true });
             form.clearErrors("password");
             form.clearErrors("newPassword");
         }
-    }, [password, newPassword, form]);
+    }, [password, newPassword, form, setValue]);
 
     const onSubmit = (values: z.infer<typeof SettingsSchema>) => {
+        setError("");
+        setSuccess("");
         startTransition(() => {
             settings(values)
                 .then((data) => {
@@ -80,10 +98,17 @@ const SettingsPage = () => {
                         update();
                         setSuccess(data.success);
                     }
-                    
                 })
                 .catch(() => setError("Something went wrong!"));
-        })
+        });
+    };
+
+    if (!showContent) {
+        return (
+            <div className="flex items-center justify-center h-screen">
+                <Loader2 className="w-8 h-8 animate-spin" />
+            </div>
+        );
     }
 
     return (
@@ -148,6 +173,8 @@ const SettingsPage = () => {
                                             placeholder="******"
                                             type="password"
                                             disabled={isPending}
+                                            ref={passwordRef}
+                                            autoComplete="new-password"
                                         />
                                         </FormControl>
                                         <FormMessage />
@@ -166,6 +193,8 @@ const SettingsPage = () => {
                                             placeholder="******"
                                             type="password"
                                             disabled={isPending}
+                                            ref={newPasswordRef}
+                                            autoComplete="new-password"
                                         />
                                         </FormControl>
                                         <FormMessage />
@@ -222,7 +251,6 @@ const SettingsPage = () => {
                                 )}
                                 />
                             )}
-                            
                             <FormError message={error} />
                             <FormSuccess message={success} />
                             <Button 
@@ -236,7 +264,7 @@ const SettingsPage = () => {
                 </div>
             </div>
         </div>
-      );
+    );
 }
 
 export default SettingsPage;

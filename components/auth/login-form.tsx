@@ -37,7 +37,7 @@ export const LoginForm = () => {
     const searchParams = useSearchParams();
     const callbackUrl = searchParams.get("callbackUrl");
     const urlError = searchParams.get("error") === "OAuthAccountNotLinked"
-        ? "Cet email est déjà utilisé avec un autre fournisseur d'authentification"
+        ? "This email is already in use with another authentication provider"
         : "";
 
     const [showTwoFactor, setShowTwoFactor] = useState(false);
@@ -61,7 +61,6 @@ export const LoginForm = () => {
             login(values, callbackUrl)
                 .then((data) => {
                     if(data?.error) {
-                        form.reset();
                         setError(data.error);
                     }
                     
@@ -107,30 +106,6 @@ export const LoginForm = () => {
                             )}
                         />
                                     
-                        /*<FormItem>
-                            <FormLabel>Two Factor Code</FormLabel>
-                            <FormControl>
-                                <InputOTP 
-                                    maxLength={6} 
-                                    {...field} 
-                                    onValueChange={(value) => field.onChange(value)} 
-                                    disabled={isPending}
-                                >
-                                    <InputOTPGroup>
-                                        <InputOTPSlot index={0} />
-                                        <InputOTPSlot index={1} />
-                                        <InputOTPSlot index={2} />
-                                    </InputOTPGroup>
-                                    <InputOTPSeparator />
-                                    <InputOTPGroup>
-                                        <InputOTPSlot index={3} />
-                                        <InputOTPSlot index={4} />
-                                        <InputOTPSlot index={5} />
-                                    </InputOTPGroup>
-                                </InputOTP>
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>*/
                         )}
                         {!showTwoFactor && (
                             <>

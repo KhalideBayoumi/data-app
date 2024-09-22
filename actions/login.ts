@@ -18,6 +18,7 @@ import {
     sendTwoFactorEmail 
 } from "@/lib/mail";
 import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation";
+import bcrypt from "bcryptjs";
 
 export const login = async (
     values: z.infer<typeof LoginSchema>,
@@ -34,7 +35,13 @@ export const login = async (
     const existingUser = await getUserByEmail(email);
 
     if (!existingUser || !existingUser.email || !existingUser.password) {
-        return { error: "L'email n'existe pas" }
+        return { error: "Email does not exist" }
+    }
+
+    const passwordsMatch = await bcrypt.compare(password, existingUser.password);
+    
+    if (!passwordsMatch) {
+        return { error: "Invalid credentials" };
     }
 
     if (!existingUser.emailVerified) {
