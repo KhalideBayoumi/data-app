@@ -40,14 +40,14 @@ export const UserButton = () => {
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                    <Link href="/settings">
+                    <Link href="/settings" className="cursor-pointer flex items-center">
                     <Settings className="h-4 w-4 mr-2" />
                         Settings
                     </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <LogoutButton>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem className="cursor-pointer">
                         <LogOut className="h-4 w-4 mr-2" />
                         Logout
                     </DropdownMenuItem>

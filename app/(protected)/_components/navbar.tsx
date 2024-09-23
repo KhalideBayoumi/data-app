@@ -21,10 +21,10 @@ export const Navbar = () => {
     
     return (
         <div className="fixed top-0 left-0 right-0 z-50 border-b">
-            <header className="flex h-16 items-center gap-4 bg-background max-w-[1440px] mx-auto">
+            <header className="flex h-16 items-center gap-4 bg-background max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8">
                 <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
                     <Link
-                        href="#"
+                        href="/dashboard"
                         className="flex items-center gap-2 text-lg font-semibold md:text-base"
                     >
                         <Logo />
@@ -99,7 +99,7 @@ export const Navbar = () => {
                             >
                                 DATAGURU
                             </Link>
-                            <Link href="#" className="hover:text-foreground">
+                            <Link href="/dashboard" className="hover:text-foreground">
                                 Dashboard
                             </Link>
                             <Link

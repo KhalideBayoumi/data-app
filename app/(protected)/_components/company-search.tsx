@@ -96,6 +96,7 @@ const CompanySearch = ({ isOpen, onClose }: CompanySearchProps) => {
                 <CommandItem
                   key={company.ticker}
                   value={company.company_name}
+                  className="cursor-pointer"
                   onSelect={(value) => {
                     handleCompanySelect(company)
                   }}

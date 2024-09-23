@@ -1,3 +1,4 @@
+import { Footer } from "./_components/footer";
 import { Navbar } from "./_components/navbar";
 
 interface ProtectedLayoutProps {
@@ -11,6 +12,7 @@ const ProtectedLayout = ({ children }: ProtectedLayoutProps) => {
             <div className="flex-grow pt-24">
                 { children }
             </div>
+            <Footer />
         </div>
     );
 }
