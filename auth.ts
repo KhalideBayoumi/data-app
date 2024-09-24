@@ -24,6 +24,12 @@ export const {
                 where: { id: user.id },
                 data: { emailVerified: new Date()}
             })
+        },
+        async signIn({ user }) {
+            await db.user.update({
+                where: { id: user.id },
+                data: { lastSignIn: new Date() }
+            });
         }
     },
     callbacks: {
@@ -69,11 +75,12 @@ export const {
                 session.user.name = token.name;
                 session.user.email = token.email as string;
                 session.user.isOAuth = token.isOAuth as boolean;
+                session.user.lastSignIn = token.lastSignIn ? new Date(token.lastSignIn) : null;
             }
 
             return session;
         },
-        async jwt({ token }) {
+        async jwt({ token, trigger }) {
             if (!token.sub) return token;
 
             const existingUser = await getUserById(token.sub);
@@ -87,6 +94,7 @@ export const {
             token.email = existingUser.email;
             token.role = existingUser.role;
             token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled;
+            token.lastSignIn = existingUser.lastSignIn?.toISOString() || null;
 
             return token;
         }

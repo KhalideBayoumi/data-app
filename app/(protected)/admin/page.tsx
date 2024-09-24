@@ -98,7 +98,7 @@ const AdminPage = async () => {
                                         <Badge variant="secondary">User</Badge>
                                     )}
                                 </TableCell>
-                                <TableCell>{user.emailVerified ? new Date(user.emailVerified).toLocaleString() : 'Not verified'}</TableCell>
+                                <TableCell>{user.emailVerified ? new Date(user.emailVerified).toLocaleString('fr-FR') : 'Not verified'}</TableCell>
                                 <TableCell className="text-right">
                                 <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
