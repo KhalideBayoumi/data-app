@@ -75,7 +75,7 @@ export const {
                 session.user.name = token.name;
                 session.user.email = token.email as string;
                 session.user.isOAuth = token.isOAuth as boolean;
-                session.user.lastSignIn = token.lastSignIn ? new Date(token.lastSignIn) : null;
+                session.user.lastSignIn = token.lastSignIn ? new Date(token.lastSignIn as Date) : null;
             }
 
             return session;
