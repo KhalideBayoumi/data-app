@@ -20,12 +20,6 @@ import {
     FormLabel,
     FormMessage
 } from "@/components/ui/form";
-import {
-    InputOTP,
-    InputOTPGroup,
-    InputOTPSeparator,
-    InputOTPSlot,
-  } from "@/components/ui/input-otp";
 
 import { CardWrapper } from "@/components/auth/card-wrapper";
 import { Button } from "@/components/ui/button";
@@ -132,7 +126,7 @@ export const LoginForm = () => {
                                 name="password"
                                 render={( { field }) => (
                                     <FormItem>
-                                        <FormLabel>Mot de passe</FormLabel>
+                                        <FormLabel>Password</FormLabel>
                                         <FormControl>
                                             <Input 
                                                 {...field}

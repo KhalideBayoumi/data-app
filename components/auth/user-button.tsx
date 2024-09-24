@@ -37,7 +37,14 @@ export const UserButton = () => {
                 </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuLabel className="font-normal">
+                    <div className="flex flex-col space-y-1">
+                        <p className="text-sm font-medium leading-none">{user?.name || "My Account"}</p>
+                        <p className="text-xs leading-none text-muted-foreground">
+                            {user?.email || ""}
+                        </p>
+                    </div>
+                </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                     <Link href="/settings" className="cursor-pointer flex items-center">
