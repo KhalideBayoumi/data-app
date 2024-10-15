@@ -1,0 +1,26 @@
+{
+  "all": [
+    {
+      "subject": "Eco.ROI",
+      "A": 120,
+      "B": 110,
+      "fullMark": 150
+    }
+  ],
+  "industry": [
+    {
+      "subject": "Eco.ROI",
+      "A": 120,
+      "B": 110,
+      "fullMark": 150
+    }
+  ],
+  "region": [
+    {
+      "subject": "Eco.ROI",
+      "A": 120,
+      "B": 110,
+      "fullMark": 150
+    }
+  ]
+}

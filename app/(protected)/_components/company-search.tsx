@@ -79,7 +79,7 @@ const CompanySearch = ({ isOpen, onClose }: CompanySearchProps) => {
 
   const handleCompanySelect = (company: Company) => {
     const ticker = company.ticker.split(' ')[0]; // only the number
-    router.push(`/analyse/companies/${ticker}`);
+    router.push(`/analyse/companies/${ticker}/snapshot`);
     setSearchTerm("");
     onClose();
   };

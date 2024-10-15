@@ -1,0 +1,89 @@
+{
+  "eco-profit-valuation": [
+    {
+      "name": "2023-03-11",
+      "implied-price": 89.45,
+      "stock-price": 25
+    }
+  ],
+  "eco-variables-evolution": {
+    "eco-profit": [
+      {
+        "year": 2019,
+        "eco-profit": 42.56
+      },
+      {
+        "year": 2020,
+        "eco-profit": 22.56
+      },
+      {
+        "year": 2021,
+        "eco-profit": 52.56
+      },
+      {
+        "year": 2022,
+        "eco-profit": 12.56
+      },
+      {
+        "year": 2023,
+        "eco-profit": 4.56
+      },
+      {
+        "year": 2024,
+        "eco-profit": 82.56
+      }
+    ],
+    "net-eco-asset": [
+      {
+        "year": 2019,
+        "net-eco-asset": 42.56
+      },
+      {
+        "year": 2020,
+        "net-eco-asset": 22.56
+      },
+      {
+        "year": 2021,
+        "net-eco-asset": 52.56
+      },
+      {
+        "year": 2022,
+        "net-eco-asset": 12.56
+      },
+      {
+        "year": 2023,
+        "net-eco-asset": 4.56
+      },
+      {
+        "year": 2024,
+        "net-eco-asset": 82.56
+      }
+    ],
+    "eco-roi": [
+      {
+        "year": 2019,
+        "eco-roi": 42.56
+      },
+      {
+        "year": 2020,
+        "eco-roi": 22.56
+      },
+      {
+        "year": 2021,
+        "eco-roi": 52.56
+      },
+      {
+        "year": 2022,
+        "eco-roi": 12.56
+      },
+      {
+        "year": 2023,
+        "eco-roi": 4.56
+      },
+      {
+        "year": 2024,
+        "eco-roi": 82.56
+      }
+    ]
+  }
+}

@@ -11,7 +11,7 @@ export const Footer = () => {
             <Link 
             href="#"
             >
-            <div className="bg-blue-600 p-1 rounded-sm">
+            <div className="p-1 rounded-sm">
                 <Linkedin className="w-4 h-4" />
             </div>
             </Link>

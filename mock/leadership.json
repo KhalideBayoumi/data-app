@@ -1,0 +1,124 @@
+{
+  "industry-market-share": [
+    {
+      "year": 2011,
+      "aapl-us-sales": 108.45,
+      "industry-total-sales": 560.23
+    },
+    {
+      "year": 2012,
+      "aapl-us-sales": 308.45,
+      "industry-total-sales": 460.23
+    },
+    {
+      "year": 2013,
+      "aapl-us-sales": 689.45,
+      "industry-total-sales": 360.23
+    },
+    {
+      "year": 2014,
+      "aapl-us-sales": 908.45,
+      "industry-total-sales": 260.23
+    },
+    {
+      "year": 2015,
+      "aapl-us-sales": 608.45,
+      "industry-total-sales": 260.23
+    },
+    {
+      "year": 2016,
+      "aapl-us-sales": 408.45,
+      "industry-total-sales": 860.23
+    }
+  ],
+  "margin-vs-industry": {
+    "eco-margin": [
+      {
+        "year": 2011,
+        "eco-margin": 12.35,
+        "1st-quartile": 23.69,
+        "median": 14.5,
+        "3rd-quartile": 12.47
+      },
+      {
+        "year": 2012,
+        "eco-margin": 11.35,
+        "1st-quartile": 13.69,
+        "median": 24.5,
+        "3rd-quartile": 10.47
+      },
+      {
+        "year": 2013,
+        "eco-margin": 34.35,
+        "1st-quartile": 36.69,
+        "median": 48.5,
+        "3rd-quartile": 29.47
+      },
+      {
+        "year": 2014,
+        "eco-margin": 22.35,
+        "1st-quartile": 76.89,
+        "median": 13.54,
+        "3rd-quartile": 10.47
+      },
+      {
+        "year": 2015,
+        "eco-margin": 67.35,
+        "1st-quartile": 6.69,
+        "median": 24.5,
+        "3rd-quartile": 12.97
+      },
+      {
+        "year": 2016,
+        "eco-margin": 2.35,
+        "1st-quartile": 3.69,
+        "median": 4.5,
+        "3rd-quartile": 18.47
+      }
+    ],
+    "operational-margin": [
+      {
+        "year": 2011,
+        "operational-margin": 12.35,
+        "1st-quartile": 23.69,
+        "median": 14.5,
+        "3rd-quartile": 12.47
+      },
+      {
+        "year": 2011,
+        "operational-margin": 12.35,
+        "1st-quartile": 23.69,
+        "median": 14.5,
+        "3rd-quartile": 12.47
+      },
+      {
+        "year": 2011,
+        "operational-margin": 12.35,
+        "1st-quartile": 23.69,
+        "median": 14.5,
+        "3rd-quartile": 12.47
+      },
+      {
+        "year": 2011,
+        "operational-margin": 12.35,
+        "1st-quartile": 23.69,
+        "median": 14.5,
+        "3rd-quartile": 12.47
+      },
+      {
+        "year": 2011,
+        "operational-margin": 12.35,
+        "1st-quartile": 23.69,
+        "median": 14.5,
+        "3rd-quartile": 12.47
+      },
+      {
+        "year": 2011,
+        "operational-margin": 12.35,
+        "1st-quartile": 23.69,
+        "median": 14.5,
+        "3rd-quartile": 12.47
+      }
+    ]
+  }
+}

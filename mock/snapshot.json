@@ -1,0 +1,142 @@
+{
+  "spot": {
+    "eco": {
+      "roi": {
+        "rcr_perc": 45.3,
+        "rcr_perc_region_median": 7.52,
+        "rcr_perc_sub_industry_median": 50.31
+      },
+      "asset": {
+        "fev_to_eci": 10.63,
+        "fev_to_eci_region_median": 6.87,
+        "fev_to_eci_sub_industry_median": 96.3
+      },
+      "valuation": {
+        "economic_pe": 5.96,
+        "economic_pe_region_median": 8.23,
+        "economic_pe_sub_industry_median": 36.78
+      },
+      "earnings-yield": {
+        "economic_ey": 5.96,
+        "economic_ey_region_median": 8.23,
+        "economic_ey_sub_industry_median": 36.78
+      }
+    },
+    "acc": {
+      "roi": {
+        "accounting_roe": 12.96,
+        "accounting_roe_region_median": 3.69,
+        "accounting_roe_sub_industry_median": 23.82
+      },
+      "asset": {
+        "accounting_pb": 16.96,
+        "accounting_pb_region_median": 7.23,
+        "accounting_pb_sub_industry_median": 1.56
+      },
+      "valuation": {
+        "accounting_pe": 5.96,
+        "accounting_pe_region_median": 8.23,
+        "accounting_pe_sub_industry_median": 36.78
+      },
+      "earnings-yield": {
+        "accounting_ey": 13.2,
+        "accounting_ey_region_median": 4.53,
+        "accounting_ey_sub_industry_median": 63.23
+      }
+    }
+  },
+  "industry": [
+    {
+      "rank": 1,
+      "company": "Wiwynn Corp",
+      "dynamicValue": 47.6,
+      "page": "/wiwynn/snapshot"
+    },
+    {
+      "rank": 2,
+      "company": "Apple Inc",
+      "dynamicValue": 45.6,
+      "page": "/apple/snapshot"
+    },
+    {
+      "rank": 3,
+      "company": "Xioami Corp",
+      "dynamicValue": 42.6,
+      "page": "/apple/snapshot"
+    },
+    {
+      "rank": 4,
+      "company": "Gigabyte Technology Co Ltd",
+      "dynamicValue": 40.6,
+      "page": "/gigabyte/snapshot"
+    },
+    {
+      "rank": 5,
+      "company": "Logitech International SA",
+      "dynamicValue": 19.9,
+      "page": "/logitech/snapshot"
+    },
+    {
+      "rank": 6,
+      "company": "Advantech Co Ltd",
+      "dynamicValue": 19.5,
+      "page": "/advantech/snapshot"
+    },
+    {
+      "rank": 7,
+      "company": "AURAS Technology Co Ltd",
+      "dynamicValue": 19.5,
+      "page": "/auras/snapshot"
+    },
+    {
+      "rank": 18,
+      "company": "Technology Hardware, Storage & Peripherals",
+      "dynamicValue": 19.5,
+      "page": "/technology/snapshot"
+    }
+  ],
+  "growth": {
+    "5-years": {
+      "industry-median": 1.8,
+      "revenues": 9.5
+    },
+    "3-years": {
+      "industry-median": 2.6,
+      "revenues": -6.5
+    },
+    "1-year": {
+      "industry-median": -4.6,
+      "revenues": -5.3
+    },
+    "1-year-fwd": {
+      "industry-median": 6.1,
+      "revenues": 2.9
+    },
+    "2-year-fwd": {
+      "industry-median": 5,
+      "revenues": 4.1
+    }
+  },
+  "share": [
+    {
+      "date": "2024-09-23T09:20:16.899Z",
+      "stock-price": 80.1
+    },
+    {
+      "date": "2024-09-24T09:20:16.899Z",
+      "stock-price": 76.6
+    },
+    {
+      "date": "2024-09-25T09:20:16.899Z",
+      "stock-price": 73.1
+    },
+    {
+      "date": "2024-09-26T09:20:16.899Z",
+      "stock-price": 70.5
+    },
+    {
+      "date": "2024-09-27T09:20:16.899Z",
+      "stock-price": 68.5
+    }
+  ]
+}

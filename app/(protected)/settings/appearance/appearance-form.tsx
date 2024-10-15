@@ -15,37 +15,44 @@ import {
 } from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
+import { useEffect } from "react";
 
 const appearanceFormSchema = z.object({
   theme: z.enum(["light", "dark"], {
     required_error: "Please select a theme.",
-  }),
-  font: z.enum(["inter", "manrope", "system"], {
-    invalid_type_error: "Select a font",
-    required_error: "Please select a font.",
-  }),
+  })
 })
 
 type AppearanceFormValues = z.infer<typeof appearanceFormSchema>
 
 // This can come from your database or API.
 const defaultValues: Partial<AppearanceFormValues> = {
-  theme: "light",
+  theme: "dark",
 }
 
-export function AppearanceForm() {
+export const AppearanceForm = () => {
+  const { setTheme, theme } = useTheme()
+  
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
     defaultValues,
   })
 
-  function onSubmit(data: AppearanceFormValues) {
-    console.log("OK");
+  useEffect(() => {
+    // Update the form value when the theme changes or on initial load
+    if (theme === "dark" || theme === "light") {
+      form.setValue("theme", theme)
+    }
+  }, [theme, form])
+  
+  const onThemeChange = (value: "light" | "dark") => {
+    setTheme(value)
   }
-
+  
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form className="space-y-8">
         <FormField
           control={form.control}
           name="theme"
@@ -54,16 +61,19 @@ export function AppearanceForm() {
               <FormLabel>Theme</FormLabel>
               <FormMessage />
               <RadioGroup
-                onValueChange={field.onChange}
-                defaultValue={field.value}
+                onValueChange={(value) => {
+                  field.onChange(value)
+                  onThemeChange(value as "light" | "dark")
+                }}
+                value={field.value}
                 className="grid max-w-md grid-cols-2 gap-8 pt-2"
               >
                 <FormItem>
-                  <FormLabel className="[&:has([data-state=checked])>div]:border-primary">
+                  <FormLabel className="[&:has([data-state=checked])>div]:border-primary cursor-pointer">
                     <FormControl>
                       <RadioGroupItem value="light" className="sr-only" />
                     </FormControl>
-                    <div className="items-center rounded-md border-2 border-muted p-1 hover:border-accent">
+                    <div className="items-center rounded-md border-2 border-muted p-1 hover:border-accent cursor-pointer">
                       <div className="space-y-2 rounded-sm bg-[#ecedef] p-2">
                         <div className="space-y-2 rounded-md bg-white p-2 shadow-sm">
                           <div className="h-2 w-[80px] rounded-lg bg-[#ecedef]" />
@@ -85,11 +95,11 @@ export function AppearanceForm() {
                   </FormLabel>
                 </FormItem>
                 <FormItem>
-                  <FormLabel className="[&:has([data-state=checked])>div]:border-primary">
+                  <FormLabel className="[&:has([data-state=checked])>div]:border-primary cursor-pointer">
                     <FormControl>
                       <RadioGroupItem value="dark" className="sr-only" />
                     </FormControl>
-                    <div className="items-center rounded-md border-2 border-muted bg-popover p-1 hover:bg-accent hover:text-accent-foreground">
+                    <div className="items-center rounded-md border-2 border-muted bg-popover p-1 hover:bg-accent hover:text-accent-foreground cursor-pointer">
                       <div className="space-y-2 rounded-sm bg-slate-950 p-2">
                         <div className="space-y-2 rounded-md bg-slate-800 p-2 shadow-sm">
                           <div className="h-2 w-[80px] rounded-lg bg-slate-400" />
@@ -114,8 +124,6 @@ export function AppearanceForm() {
             </FormItem>
           )}
         />
-
-        <Button type="submit">Update preferences</Button>
       </form>
     </Form>
   )

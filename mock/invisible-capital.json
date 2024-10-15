@@ -1,0 +1,138 @@
+{
+  "capex": {
+    "sales": [
+      {
+        "year": 2011,
+        "rd": 96.35,
+        "industry-median-rd": 1.5,
+        "industry-median-advertising": 0.5,
+        "advertising-invested": 0.8
+      },
+      {
+        "year": 2012,
+        "rd": 77.35,
+        "industry-median-rd": 3.5,
+        "industry-median-advertising": 0.5,
+        "advertising-invested": 3.8
+      },
+      {
+        "year": 2013,
+        "rd": 46.35,
+        "industry-median-rd": 7.5,
+        "industry-median-advertising": 3.5,
+        "advertising-invested": 2.8
+      },
+      {
+        "year": 2014,
+        "rd": 96.35,
+        "industry-median-rd": 8.5,
+        "industry-median-advertising": 0.5,
+        "advertising-invested": 2.8
+      },
+      {
+        "year": 2015,
+        "rd": 56.35,
+        "industry-median-rd": 4.5,
+        "industry-median-advertising": 1.5,
+        "advertising-invested": 6.8
+      },
+      {
+        "year": 2016,
+        "rd": 26.35,
+        "industry-median-rd": 1.5,
+        "industry-median-advertising": 9.5,
+        "advertising-invested": 8.8
+      }
+    ],
+    "expenses": [
+      {
+        "year": 2011,
+        "rd": 96.35,
+        "industry-median-rd": 1.5,
+        "industry-median-advertising": 0.5,
+        "advertising-invested": 0.8
+      },
+      {
+        "year": 2012,
+        "rd": 56.35,
+        "industry-median-rd": 2.5,
+        "industry-median-advertising": 1.5,
+        "advertising-invested": 7.8
+      },
+      {
+        "year": 2013,
+        "rd": 26.35,
+        "industry-median-rd": 1.5,
+        "industry-median-advertising": 9.5,
+        "advertising-invested": 8.8
+      },
+      {
+        "year": 2014,
+        "rd": 16.35,
+        "industry-median-rd": 2.5,
+        "industry-median-advertising": 6.5,
+        "advertising-invested": 4.8
+      },
+      {
+        "year": 2015,
+        "rd": 36.35,
+        "industry-median-rd": 0.5,
+        "industry-median-advertising": 2.5,
+        "advertising-invested": 3.8
+      },
+      {
+        "year": 2016,
+        "rd": 46.35,
+        "industry-median-rd": 7.5,
+        "industry-median-advertising": 2.5,
+        "advertising-invested": 4.8
+      }
+    ]
+  },
+  "capital-invested": {
+    "rd": [
+      {
+        "name": "R&D Life",
+        "value": 45.96
+      }
+    ],
+    "advertising": [
+      {
+        "name": "Advertising Life",
+        "value": 13
+      }
+    ]
+  },
+  "capitalized-breakdown": [
+    {
+      "year": 2011,
+      "advertising": 5.003,
+      "rd": 5.63
+    },
+    {
+      "year": 2012,
+      "advertising": 4.23,
+      "rd": 4.63
+    },
+    {
+      "year": 2013,
+      "advertising": 1.003,
+      "rd": 2.63
+    },
+    {
+      "year": 2014,
+      "advertising": 7.003,
+      "rd": 6.63
+    },
+    {
+      "year": 2015,
+      "advertising": 3.003,
+      "rd": 8.63
+    },
+    {
+      "year": 2016,
+      "advertising": 10.54,
+      "rd": 5.63
+    }
+  ]
+}

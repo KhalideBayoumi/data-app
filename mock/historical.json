@@ -1,0 +1,182 @@
+{
+  "eco-roi": [
+    {
+      "year": 2011,
+      "roi": 74.85
+    },
+    {
+      "year": 2012,
+      "roi": 74.85
+    },
+    {
+      "year": 2013,
+      "roi": 73.85
+    },
+    {
+      "year": 2014,
+      "roi": 64.85
+    },
+    {
+      "year": 2015,
+      "roi": 84.85
+    },
+    {
+      "year": 2016,
+      "roi": 74.85
+    }
+  ],
+  "eco-cash": [
+    {
+      "year": 2011,
+      "cash": 96.35
+    },
+    {
+      "year": 2012,
+      "cash": 49.25
+    },
+    {
+      "year": 2013,
+      "cash": 26.35
+    },
+    {
+      "year": 2014,
+      "cash": 96.35
+    },
+    {
+      "year": 2015,
+      "cash": 86.35
+    },
+    {
+      "year": 2016,
+      "cash": 23.35
+    }
+  ],
+  "eco-assets": [
+    {
+      "year": 2011,
+      "assets": 96.35
+    },
+    {
+      "year": 2012,
+      "assets": 49.25
+    },
+    {
+      "year": 2013,
+      "assets": 26.35
+    },
+    {
+      "year": 2014,
+      "assets": 66.35
+    },
+    {
+      "year": 2015,
+      "assets": 53.35
+    },
+    {
+      "year": 2016,
+      "assets": 86.35
+    }
+  ],
+  "eco-enterprise": [
+    {
+      "year": 2011,
+      "debt": 96.35
+    },
+    {
+      "year": 2012,
+      "debt": 49.25
+    },
+    {
+      "year": 2013,
+      "debt": 26.35
+    },
+    {
+      "year": 2014,
+      "debt": 97.35
+    },
+    {
+      "year": 2015,
+      "debt": 32.35
+    },
+    {
+      "year": 2016,
+      "debt": 78.35
+    }
+  ],
+  "eco-value-created": [
+    {
+      "year": 2011,
+      "economic": 18.35,
+      "market": 12.5
+    },
+    {
+      "year": 2012,
+      "economic": 49.25,
+      "market": 13.4
+    },
+    {
+      "year": 2013,
+      "economic": 26.35,
+      "market": 11.3
+    },
+    {
+      "year": 2014,
+      "economic": 96.35,
+      "market": 23.4
+    },
+    {
+      "year": 2015,
+      "economic": 86.35,
+      "market": 34.1
+    },
+    {
+      "year": 2016,
+      "economic": 23.35,
+      "market": 60.23
+    }
+  ],
+  "eam-rc": [
+    {
+      "year": 2011,
+      "eco-am": 96.35,
+      "eco-am-low": 66.35,
+      "eco-am-high": 76.35,
+      "eco-am-cr": 46.35
+    },
+    {
+      "year": 2012,
+      "eco-am": 86.35,
+      "eco-am-low": 56.35,
+      "eco-am-high": 96.35,
+      "eco-am-cr": 36.35
+    },
+    {
+      "year": 2013,
+      "eco-am": 46.35,
+      "eco-am-low": 36.35,
+      "eco-am-high": 56.35,
+      "eco-am-cr": 26.35
+    },
+    {
+      "year": 2014,
+      "eco-am": 16.35,
+      "eco-am-low": 36.35,
+      "eco-am-high": 46.35,
+      "eco-am-cr": 57.35
+    },
+    {
+      "year": 2015,
+      "eco-am": 26.35,
+      "eco-am-low": 36.35,
+      "eco-am-high": 86.35,
+      "eco-am-cr": 16.35
+    },
+    {
+      "year": 2016,
+      "eco-am": 96.35,
+      "eco-am-low": 16.35,
+      "eco-am-high": 36.35,
+      "eco-am-cr": 76.35
+    }
+  ]
+}
