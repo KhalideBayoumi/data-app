@@ -4,13 +4,6 @@ import React, { useState } from 'react';
 import { Bar, BarChart, XAxis, YAxis, LabelList } from "recharts";
 import { Info } from "lucide-react";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
   Select,
   SelectContent,
   SelectItem,
@@ -20,6 +13,7 @@ import {
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ReusableTooltip from '@/app/(protected)/_components/reusable-tooltip';
 import { ChartContainer } from "@/components/ui/chart";
+import ChartWrapper from './ui/chart-wrapper';
 
 const generateChartData = {
     'Last FY': {
@@ -188,6 +182,27 @@ export const SpotMetrics = () => {
       }
   };
 
+  const headerContent = (
+    <div className="flex items-center space-x-2">
+      <Tabs value={activeTab} onValueChange={handleTabChange}>
+        <TabsList>
+          <TabsTrigger value="eco">Eco.</TabsTrigger>
+          <TabsTrigger value="acc">Acc.</TabsTrigger>
+        </TabsList>
+      </Tabs>
+      <Select onValueChange={handlePeriodChange} value={selectedPeriod}>
+        <SelectTrigger>
+          <SelectValue placeholder="Select period" />
+        </SelectTrigger>
+        <SelectContent>
+          {Object.keys(generateChartData).map((period) => (
+            <SelectItem key={period} value={period}>{period}</SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  );
+
   const renderCharts = () => {
     const periodData = (generateChartData as any)[selectedPeriod][activeTab];
     if (!periodData) return null;
@@ -228,10 +243,10 @@ export const SpotMetrics = () => {
               trigger={
                 <span className="flex items-center cursor-pointer">
                   <Info className="h-3 w-3 inline-block mr-1" />
-                  {(tooltipInfo as any)[title]?.label || title.charAt(0).toUpperCase() + title.slice(1)}
                 </span>
               }
             />
+            {(tooltipInfo as any)[title]?.label || title.charAt(0).toUpperCase() + title.slice(1)}
           </h3>
           <ChartContainer
             config={{
@@ -281,44 +296,18 @@ export const SpotMetrics = () => {
   };
 
   return (
-    <Card className="w-full max-w-xl mx-auto">
-      <CardHeader className="pb-2">
-        <CardTitle className="flex justify-between items-center text-lg">
-          <ReusableTooltip
-            description={
-                '"Last FY" = Last Fiscal Year (LFY)\n' +
-                '"Next FY" = LFY+1 using consensus estimates and year-to-date data\n' +
-                '"Today" = interpolated value between LFY and LFY+1\n' +
-                '"1Y Forward" = interpolated value between LFY+1 and LFY+2'
-            }
-            trigger={
-              <span className="flex items-center cursor-pointer">
-                <Info className="h-3 w-3 inline-block mr-1" />
-                Spot Metrics
-              </span>
-            }
-          />
-          <div className="flex items-center space-x-2">
-            <Tabs value={activeTab} onValueChange={handleTabChange}>
-              <TabsList>
-                <TabsTrigger value="eco">Eco.</TabsTrigger>
-                <TabsTrigger value="acc">Acc.</TabsTrigger>
-              </TabsList>
-            </Tabs>
-            <Select onValueChange={handlePeriodChange} value={selectedPeriod}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select period" />
-              </SelectTrigger>
-              <SelectContent>
-                {Object.keys(generateChartData).map((period) => (
-                  <SelectItem key={period} value={period}>{period}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        </CardTitle>
-        <CardDescription className="pt-4">
-          <div className="flex justify-start gap-4 mt-1 text-xs">
+    <ChartWrapper
+          title="Spot Metrics"
+          tooltipDescription={
+            '"Last FY" = Last Fiscal Year (LFY)\n' +
+            '"Next FY" = LFY+1 using consensus estimates and year-to-date data\n' +
+            '"Today" = interpolated value between LFY and LFY+1\n' +
+            '"1Y Forward" = interpolated value between LFY+1 and LFY+2'
+          }
+          showMaximizeIcon={false}
+          headerContent={headerContent}
+        >
+          <div className="flex justify-start gap-4 mt-1 text-xs mb-4">
             {Object.entries(colors).map(([name, color]) => (
               <div key={name} className="flex items-center">
                 <div className="w-2 h-2 rounded-full mr-1" style={{backgroundColor: color}}></div>
@@ -326,14 +315,10 @@ export const SpotMetrics = () => {
               </div>
             ))}
           </div>
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="pt-9">
-        <div className="space-y-4">
-          {renderCharts()}
-        </div>
-      </CardContent>
-    </Card>
+          <div className="space-y-4">
+            {renderCharts()}
+          </div>
+    </ChartWrapper>
   );
 };
 

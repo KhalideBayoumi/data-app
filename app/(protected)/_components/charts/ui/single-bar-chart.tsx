@@ -2,9 +2,14 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Rectangle, ReferenceLine } from 'recharts';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
-const SingleBarChart = ({ data, dataKey, color }: any) => {
-  const isPercentage = dataKey === "economicROI";
+interface SingleBarChartProps {
+  data: any[];
+  dataKey: string;
+  color?: string;
+  isPercentage?: boolean;
+}
 
+const SingleBarChart = ({ data, dataKey, color, isPercentage = false }: SingleBarChartProps) => {
   const customYAxisTick = ({ x, y, payload }: any) => {
     const value = isPercentage ? `${payload.value}%` : payload.value.toLocaleString();
     return (
@@ -29,6 +34,14 @@ const SingleBarChart = ({ data, dataKey, color }: any) => {
     return [minValue < 0 ? minValue : 0, maxValue];
   };
 
+  const formatTooltipDate = (label: string) => {
+    return `Year ${label}`;
+  };
+
+  const yAxisFormatter = (value: number) => {
+    return isPercentage ? `${value.toFixed(1)}%` : value.toLocaleString();
+  };
+
   return (
     <ChartContainer
       config={{
@@ -49,11 +62,24 @@ const SingleBarChart = ({ data, dataKey, color }: any) => {
           <ReferenceLine y={0} stroke="#444" />
           <ChartTooltip
             content={
-              <ChartTooltipContent 
-                formatter={(value) => isPercentage ? `${value}%` : value.toLocaleString()}
+              <ChartTooltipContent
+                formatter={(value, name, props) => (
+                  <>
+                    <div
+                      className="h-2.5 w-2.5 shrink-0 rounded-[2px] bg-[--color-bg]"
+                      style={{
+                        "--color-bg": color || "hsl(var(--chart-2))",
+                      } as React.CSSProperties}
+                    />
+                    {name}
+                    <div className="ml-auto flex items-baseline gap-0.5 font-mono font-medium tabular-nums text-foreground">
+                      {yAxisFormatter(value as number)}
+                    </div>
+                  </>
+                )}
               />
             }
-            cursor={true}
+            labelFormatter={formatTooltipDate}
           />
           <Bar 
             dataKey={dataKey} 

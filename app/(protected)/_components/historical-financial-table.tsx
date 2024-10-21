@@ -144,15 +144,11 @@ const columns: ColumnDef<FinancialData>[] = [
     },
   ];
   
-  const HistoricalFinancialTable: React.FC = () => {
+  const HistoricalFinancialTable = () => {
     return (
 
     <Card>
-      <CardHeader>
-        <div className="flex justify-between items-center">
-          <CardTitle>Data</CardTitle>
-        </div>
-      </CardHeader>
+      <CardHeader></CardHeader>
       <CardContent>
         <DataTable
             columns={columns}

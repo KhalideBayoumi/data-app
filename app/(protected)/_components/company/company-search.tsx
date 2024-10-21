@@ -14,11 +14,14 @@ import {
   Dialog,
   DialogContent,
 } from "@/components/ui/dialog"
+import AvatarWithStatus, { ValidStatus } from '@/app/(protected)/_components/company/avatar-with-status';
 
 interface Company {
   company_name: string;
   ticker: string;
   country_name: string;
+  status: ValidStatus;
+  logo?: string;
 }
 
 const mockData = {
@@ -26,36 +29,45 @@ const mockData = {
   "data": {
     "result": [
       {
-        "company_name": "A-Living Smart City Services Co Ltd",
-        "ticker": "3319 HK Equity",
-        "country_name": "CHINA"
+        "company_name": "Solar Applied Materials Technology Corp",
+        "ticker": "1785.TWO",
+        "country_name": "TAIWAN",
+        "status": "off" as ValidStatus,
+        "logo": "https://app.dataguru.world/flags/tw.svg",
       },
       {
-        "company_name": "Sam-A Aluminum Co Ltd",
-        "ticker": "006110 KS Equity",
-        "country_name": "SOUTH KOREA"
+        "company_name": "Apple Inc",
+        "ticker": "AAPL",
+        "country_name": "SOUTH KOREA",
+        "status": "live" as ValidStatus,
+        "logo": "https://app.dataguru.world/flags/us.svg",
       },
       {
-        "company_name": "Samsung E&A Co Ltd",
-        "ticker": "028050 KS Equity",
-        "country_name": "SOUTH KOREA"
+        "company_name": "Golden Solar New Energy Technology Holdings Ltd",
+        "ticker": "1121.HK",
+        "country_name": "CHINA",
+        "status": "pending" as ValidStatus,
+        "logo": "https://app.dataguru.world/flags/cn.svg",
       },
       {
         "company_name": "Nihon M&A Center Holdings Inc",
         "ticker": "2127 JP Equity",
-        "country_name": "JAPAN"
+        "country_name": "JAPAN",
+        "status": "off" as ValidStatus
       },
       {
         "company_name": "A Holdings Corp",
         "ticker": "3938 JP Equity",
-        "country_name": "JAPAN"
+        "country_name": "JAPAN",
+        "status": "pending" as ValidStatus,
+        "logo": "/logos/a-holdings.png"
       }
-    ]
+    ] as Company[]
   }
 };
 
-const getInitials = (countryName: string) => {
-  return countryName.split(' ').map(word => word[0]).join('').toUpperCase();
+const getInitials = (company: string) => {
+  return company.charAt(0).toUpperCase();
 };
 
 interface CompanySearchProps {
@@ -102,10 +114,14 @@ const CompanySearch = ({ isOpen, onClose }: CompanySearchProps) => {
                   }}
                 >
                   <div className="flex items-center">
-                    <div className="mr-2 flex h-7 w-7 items-center justify-center rounded-full bg-blue-500 text-xs font-medium text-white">
-                      {getInitials(company.country_name)}
-                    </div>
-                    <div>
+                    <AvatarWithStatus
+                      status={company.status}
+                      logo={company.logo}
+                      name={company.company_name}
+                      initials={getInitials(company.company_name)}
+                      size="sm"
+                    />
+                    <div className="ml-2">
                       <div className="font-medium">{company.company_name}</div>
                       <div className="text-sm text-gray-500">{company.ticker}</div>
                     </div>
