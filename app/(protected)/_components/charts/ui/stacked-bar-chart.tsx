@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, ReferenceLine } from 'recharts';
 import {
   ChartTooltip,
   ChartTooltipContent,
@@ -20,9 +20,10 @@ type StackedBarChartProps = {
   categories: { name: string; color: string }[];
   width?: number;
   height?: number;
+  showReferenceLine?: boolean;
 };
 
-const StackedBarChart: React.FC<StackedBarChartProps> = ({ data, categories, width = 500, height = 300 }) => {
+const StackedBarChart = ({ data, categories, width = 500, height = 300, showReferenceLine = false  }: StackedBarChartProps) => {
   const formatYAxis = (value: number): string => {
     if (value >= 1000) {
       return `${(value / 1000).toFixed(1)}k`;
@@ -62,6 +63,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({ data, categories, wid
               radius={index === categories.length - 1 ? [3, 3, 0, 0] : [0, 0, 0, 0]}
             />
           ))}
+          {showReferenceLine && <ReferenceLine y={0} stroke="hsl(var(--chart-3))" strokeWidth={1} />}
         </BarChart>
       </ResponsiveContainer>
     </ChartContainer>
