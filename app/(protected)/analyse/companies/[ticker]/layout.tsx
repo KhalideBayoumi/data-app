@@ -133,7 +133,10 @@ const CompanyPage = ({ params, children }: CompanyPageProps) => {
     ];
 
     const handleTabChange = (value: string) => {
-        router.push(`/analyse/companies/${params.ticker}/${value}`);
+        const tab = tabs.find(t => t.value === value);
+        if (!tab?.disabled) {
+            router.push(`/analyse/companies/${params.ticker}/${value}`);
+        }
     };
 
     useEffect(() => {
@@ -146,7 +149,7 @@ const CompanyPage = ({ params, children }: CompanyPageProps) => {
     }, [params.ticker]);
 
     return ( 
-        <main className="flex flex-1 flex-col gap-4 px-4 pb-4 md:gap-8 md:px-8 md:pb-8">
+        <main className="flex flex-1 flex-col gap-4 px-4 md:gap-8 md:px-8">
             <div className="space-y-2">
                 <div className="grid gap-4 md:grid-cols-4">
                     <CompanyDesc ticker={params.ticker} />
@@ -156,19 +159,23 @@ const CompanyPage = ({ params, children }: CompanyPageProps) => {
                 </div>
                 {companyStatus === 'live' && 
                     <div className="w-full">
-                        <Tabs value={currentTab} onValueChange={handleTabChange} className="space-y-4 py-4">
+                       <Tabs value={currentTab} onValueChange={handleTabChange} className="space-y-4 py-4">
                             <TabsList className="w-full flex flex-wrap justify-between">
                                 {tabs.map((tab) => (
                                     <TabsTrigger 
                                         key={tab.value}
                                         value={tab.value}
                                         disabled={tab.disabled}
-                                        asChild
+                                        className={tab.disabled ? 'cursor-not-allowed opacity-50' : ''}
                                     >
-                                        <Link href={`/analyse/companies/${params.ticker}/${tab.value}`}>
+                                        <span className="flex items-center">
                                             {tab.label}
-                                            {tab.beta && <span className="ml-1 text-xs font-normal text-muted-foreground">(beta)</span>}
-                                        </Link>
+                                            {tab.beta && (
+                                                <span className="ml-1 text-xs font-normal text-muted-foreground">
+                                                    (beta)
+                                                </span>
+                                            )}
+                                        </span>
                                     </TabsTrigger>
                                 ))}
                             </TabsList>

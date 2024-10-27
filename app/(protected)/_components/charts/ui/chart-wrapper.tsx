@@ -29,7 +29,7 @@ const ChartWrapper = ({
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const renderContent = (isDialog: boolean) => (
-    <Card className={`w-full h-full flex flex-col ${isDialog ? 'h-full' : 'max-w-xl mx-auto'}`}>
+    <Card className={`w-full h-full flex flex-col ${isDialog ? 'h-full' : 'mx-auto'}`}>
       <CardHeader className="pb-2">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-2">
@@ -41,19 +41,21 @@ const ChartWrapper = ({
             )}
             <CardTitle>{title}</CardTitle>
           </div>
-          {headerContent}
-          {!isDialog && showMaximizeIcon && (
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <button className="p-2 hover:bg-secondary rounded">
-                  <Maximize2 className="w-4 h-4" />
-                </button>
-              </DialogTrigger>
-              <DialogContent className="p-0 scale-150 border-0">
-                {renderContent(true)}
-              </DialogContent>
-            </Dialog>
-          )}
+          <div className="flex items-center gap-2">
+            {headerContent}
+            {!isDialog && showMaximizeIcon && (
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger asChild>
+                  <button className="p-2 hover:bg-secondary rounded">
+                    <Maximize2 className="w-4 h-4" />
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="p-0 scale-150 border-0">
+                  {renderContent(true)}
+                </DialogContent>
+              </Dialog>
+            )}
+          </div>
         </div>
       </CardHeader>
       <CardContent className="flex-grow overflow-auto">

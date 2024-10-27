@@ -5,24 +5,28 @@ import GrowthMetrics from "@/app/(protected)/_components/charts/growth-metrics";
 import SharePrice from "@/app/(protected)/_components/charts/share-price";
 
 const SnapshotPage = () => {
+    const cardClasses = " w-full overflow-auto";
+    
     return ( 
-        <div className="w-full h-[calc(100vh-4rem)] flex flex-col">
-            <div className="flex-grow flex flex-col md:flex-row">
-                <div className="w-full md:w-1/3 p-4 flex flex-col">
-                    <div className="flex-grow bg-card rounded-lg shadow-md overflow-auto">
+        <div>
+            <div className="h-full flex flex-col md:flex-row gap-4 py-4">
+                <div className="flex-1 flex">
+                    <div className={`${cardClasses}`}>
                         <SpotMetrics />
                     </div>
                 </div>
-                <div className="w-full md:w-1/3 p-4 flex flex-col max-h-[calc(100vh-4rem)]">
-                    <div className="flex-grow bg-card rounded-lg shadow-md overflow-y-auto">
+
+                <div className="flex-1 flex">
+                    <div className={`${cardClasses}`}>
                         <IndustryRank />
                     </div>
                 </div>
-                <div className="w-full md:w-1/3 p-4 flex flex-col">
-                    <div className="flex-grow bg-card rounded-lg shadow-md overflow-auto mb-4">
+
+                <div className="flex-1 flex flex-col gap-4">
+                    <div className={cardClasses}>
                         <GrowthMetrics />
                     </div>
-                    <div className="flex-grow bg-card rounded-lg shadow-md overflow-auto">
+                    <div className={cardClasses}>
                         <SharePrice />
                     </div>
                 </div>

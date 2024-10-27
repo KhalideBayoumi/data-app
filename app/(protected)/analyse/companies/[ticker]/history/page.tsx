@@ -116,7 +116,7 @@ const HistoricalPage = () => {
   ];
 
   return (
-    <div className="p-4">
+    <div className="pb-4">
       <div className="flex items-center justify-end mb-4">
         <Tabs value={activeView} onValueChange={handleViewChange}>
           <TabsList>

@@ -1,0 +1,20 @@
+{
+    "navigation": {
+      "home": "Accueil",
+      "dashboard": "Tableau de bord",
+      "settings": "Paramètres"
+    },
+    "common": {
+      "loading": "Chargement...",
+      "error": "Erreur",
+      "save": "Enregistrer",
+      "cancel": "Annuler"
+    },
+    "dashboard": {
+      "title": "Tableau de bord",
+      "welcome": "Bienvenue, {name}",
+      "stats": {
+        "users": "Utilisateurs"
+      }
+    }
+  }

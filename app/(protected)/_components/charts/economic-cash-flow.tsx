@@ -32,7 +32,7 @@ const EconomicCashFlow = () => {
         data={data}
         categories={categories}
         width={500}
-        height={300}
+        height={320}
         showReferenceLine={true} 
       />
     </ChartWrapper>
