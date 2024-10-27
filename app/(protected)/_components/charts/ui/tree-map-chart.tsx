@@ -22,7 +22,7 @@ const TreemapChart = ({
 }: TreemapProps) => {
   const [activeBlock, setActiveBlock] = useState<string | null>(null);
 
-  const CustomTooltip = ({ active, payload }) => {
+  const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length > 0) {
       const data = payload[0].payload;
       const color = getColor(data.name);
@@ -45,7 +45,7 @@ const TreemapChart = ({
     return null;
   };
 
-  const CustomContent = (props) => {
+  const CustomContent = (props: any) => {
     if (!props) return null;
     
     const { x, y, width, height, name, size } = props;
@@ -95,14 +95,16 @@ const TreemapChart = ({
     <div className="w-full" style={{ height }}>
       <ResponsiveContainer width="100%" height="100%">
         <Treemap
-          data={formattedData}
-          dataKey="size"
-          stroke="hsl(var(--background))"
-          strokeWidth={1}
-          aspectRatio={aspectRatio}
-          animationDuration={0}
-          isAnimationActive={false}
-          content={CustomContent}
+          {...{
+            data: formattedData,
+            dataKey: "size",
+            stroke: "hsl(var(--background))",
+            strokeWidth: 1,
+            aspectRatio,
+            animationDuration: 0,
+            isAnimationActive: false,
+            content: CustomContent
+          } as any}
         >
           <Tooltip 
             content={<CustomTooltip />}

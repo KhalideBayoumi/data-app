@@ -45,7 +45,7 @@ The percentage number represents the revenue share of the company in its industr
           categories={categories}
           width={800}
           height={400}
-          showMarketShare={true}
+          showPercentage={true}
         />
       </div>
     </ChartWrapper>

@@ -22,10 +22,10 @@ type StackedBarChartProps = {
  width?: number;
  height?: number;
  showReferenceLine?: boolean;
- showMarketShare?: boolean;
+ showPercentage?: boolean;
 };
 
-const StackedBarChart = ({ data, categories, width = 500, height = 300, showReferenceLine = false, showMarketShare = false  }: StackedBarChartProps) => {
+const StackedBarChart = ({ data, categories, width = 500, height = 300, showReferenceLine = false, showPercentage = false  }: StackedBarChartProps) => {
  const formatYAxis = (value: number): string => {
    return value.toString();
  };
@@ -36,7 +36,7 @@ const StackedBarChart = ({ data, categories, width = 500, height = 300, showRefe
 
  const LabelComponent = (props: any) => {
    const { x, y, width, value } = props;
-   if (!showMarketShare || !value?.percentage) return null;
+   if (!showPercentage || !value?.percentage) return null;
    return (
      <Text
        x={x + width / 2}
@@ -76,7 +76,7 @@ const StackedBarChart = ({ data, categories, width = 500, height = 300, showRefe
              stackId="a"
              fill={category.color}
              radius={index === categories.length - 1 ? [3, 3, 0, 0] : [0, 0, 0, 0]}
-             label={index === 0 ? <LabelComponent /> : null}
+             label={showPercentage && index === 0 ? LabelComponent as any : false}
            />
          ))}
          {showReferenceLine && <ReferenceLine y={0} stroke="hsl(var(--chart-3))" strokeWidth={1} />}
