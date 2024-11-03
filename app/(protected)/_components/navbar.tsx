@@ -73,7 +73,7 @@ export const Navbar = () => {
                         <Link
                             href="/admin"
                             className={`transition-colors hover:text-foreground ${
-                                pathname === "#" ? "text-foreground" : "text-muted-foreground"
+                                pathname === "/admin" ? "text-foreground" : "text-muted-foreground"
                             }`}
                         >
                             Administration
@@ -132,7 +132,7 @@ export const Navbar = () => {
                                 <Link
                                     href="/admin"
                                     className={`transition-colors hover:text-foreground ${
-                                        pathname === "#" ? "text-foreground" : "text-muted-foreground"
+                                        pathname === "/admin" ? "text-foreground" : "text-muted-foreground"
                                     }`}
                                 >
                                     Administration

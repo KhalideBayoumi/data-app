@@ -1,18 +1,25 @@
+import { FEATURES } from "./feature";
+
+const addLocalePrefix = (route: string) => {
+    if (!FEATURES.i18n) return route;
+    return route === '/' ? '/:locale' : `/:locale${route}`;
+};
+
 export const publicRoutes = [
-    "/",
-    "/auth/new-verification"
+    addLocalePrefix("/"),
+    addLocalePrefix("/auth/new-verification")
 ];
 
 export const authRoutes = [
-    "/auth/login",
-    "/auth/register",
-    "/auth/error",
-    "/auth/reset",
-    "/auth/new-password"
+    addLocalePrefix("/auth/login"),
+    addLocalePrefix("/auth/register"),
+    addLocalePrefix("/auth/error"),
+    addLocalePrefix("/auth/reset"),
+    addLocalePrefix("/auth/new-password")
 ];
 
 export const adminRoutes = [
-    "/admin"
+    addLocalePrefix("/admin")
 ];
 
 /**
@@ -20,6 +27,6 @@ export const adminRoutes = [
  * Routes that start with this prefix are used for API authentication purposes 
  * @type {string}
  */
-export const apiAuthPrefix = "/api/auth";
+export const apiAuthPrefix = addLocalePrefix("/api/auth");
 
-export const DEFAULT_LOGIN_REDIRECT = "/dashboard";
+export const DEFAULT_LOGIN_REDIRECT = addLocalePrefix("/dashboard");

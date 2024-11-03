@@ -1,37 +1,20 @@
+import DataTable from '@/app/(protected)/_components/datatable/data-table';
+import { columns, roleFilter } from './columns';
 import {
-  MoreHorizontal,
   PlusCircle,
 } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent
 } from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { Separator } from "@/components/ui/separator";
 import { getAllUsers } from "@/data/user";
-import { UserRole } from "@prisma/client";
 import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -40,9 +23,9 @@ import { RegisterForm } from "@/components/auth/register-form";
 
 const AdminPage = async () => {
     const dbUsers = await getAllUsers();
-    
+
     return (
-        <div className="hidden p-10 pb-16 px-40 md:block">
+<div className="hidden p-10 pb-16 px-40 md:block">
         <div className="space-y-0.5">
             <h2 className="text-2xl font-bold tracking-tight">Administration</h2>
             <p className="text-muted-foreground">
@@ -74,56 +57,21 @@ const AdminPage = async () => {
             </div>
             <Card>
                 <CardContent className="p-4">
-                <Table>
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead>Name</TableHead>
-                            <TableHead>Email</TableHead>
-                            <TableHead>Role</TableHead>
-                            <TableHead>Verified at</TableHead>
-                            <TableHead className="text-right">Actions</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {dbUsers && dbUsers.map((user) => (
-                            <TableRow key={user.id}>
-                                <TableCell className="font-medium">{user.name}</TableCell>
-                                <TableCell>
-                                    <Badge variant="outline">{user.email}</Badge>
-                                </TableCell>
-                                <TableCell>
-                                    {user.role === UserRole.ADMIN ? (
-                                        <Badge variant="destructive">Admin</Badge>
-                                    ) : (
-                                        <Badge variant="secondary">User</Badge>
-                                    )}
-                                </TableCell>
-                                <TableCell>{user.emailVerified ? new Date(user.emailVerified).toLocaleString('fr-FR') : 'Not verified'}</TableCell>
-                                <TableCell className="text-right">
-                                <DropdownMenu>
-                                    <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" className="h-8 w-8 p-0">
-                                        <MoreHorizontal className="h-4 w-4" />
-                                    </Button>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent align="end" className="shadow-lg">
-                                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                        <DropdownMenuItem>View details</DropdownMenuItem>
-                                        <DropdownMenuItem>Edit user</DropdownMenuItem>
-                                        <DropdownMenuItem>Delete user</DropdownMenuItem>
-                                    </DropdownMenuContent>
-                                </DropdownMenu>
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                    <DataTable
+                        columns={columns}
+                        data={dbUsers || []}
+                        filterColumn="name"
+                        facetedFilters={[roleFilter]}
+                        filterPlaceholder="Filter by name..."
+                        pageSizeOptions={[5, 10, 25, 50, 100]}
+                        defaultSorting={[{ id: "name", desc: false }]}
+                    />
                 </CardContent>
             </Card>
             </div>
         </div>
         </div>
-    )
+    );
 }
-
+  
 export default AdminPage;

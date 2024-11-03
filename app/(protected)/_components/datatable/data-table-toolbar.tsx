@@ -61,7 +61,6 @@ const DataTableToolbar = <TData,>({
                 )}
             </div>
         </div>
-        <DataTableViewOptions table={table} />
     </>
 
   )

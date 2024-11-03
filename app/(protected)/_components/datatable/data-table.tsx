@@ -27,6 +27,7 @@ import {
 import DataTableToolbar from './data-table-toolbar';
 import DataTablePagination from './data-table-pagination';
 import SelectCell from '@/app/(protected)/_components/datatable/select-cell-wrapper';
+import DataTableViewOptions from './data-table-view-options';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -47,6 +48,7 @@ interface DataTableProps<TData, TValue> {
     title: string
     columns: string[]
   }[]
+  defaultSorting?: SortingState
 }
 
 const DataTable = <TData, TValue>({
@@ -57,11 +59,12 @@ const DataTable = <TData, TValue>({
   facetedFilters,
   pageSizeOptions,
   columnGroups,
+  defaultSorting = [],
 }: DataTableProps<TData, TValue>) => {
   const [rowSelection, setRowSelection] = useState({})
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
-  const [sorting, setSorting] = useState<SortingState>([])
+  const [sorting, setSorting] = useState<SortingState>(defaultSorting)
 
   const table = useReactTable({
     data,
@@ -119,6 +122,7 @@ const DataTable = <TData, TValue>({
           filterPlaceholder={filterPlaceholder}
           facetedFilters={facetedFilters}
         />
+        <DataTableViewOptions table={table} columnGroups={columnGroups} />
       </div>
       <div className="rounded-md border">
         <Table>

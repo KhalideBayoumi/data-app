@@ -57,6 +57,17 @@ const CustomLegendContent = (props: any) => {
 };
 
 const economicData = [
+  { year: 2000, company: 9.5, industryMedian: 11.8 },
+  { year: 2001, company: 9.8, industryMedian: 11.5 },
+  { year: 2002, company: 10.2, industryMedian: 11.9 },
+  { year: 2003, company: 9.7, industryMedian: 12.1 },
+  { year: 2004, company: 10.3, industryMedian: 12.3 },
+  { year: 2005, company: 10.5, industryMedian: 12.2 },
+  { year: 2006, company: 10.1, industryMedian: 11.7 },
+  { year: 2007, company: 9.9, industryMedian: 11.8 },
+  { year: 2008, company: 10.4, industryMedian: 12.4 },
+  { year: 2009, company: 10.2, industryMedian: 12.1 },
+  { year: 2010, company: 9.8, industryMedian: 11.9 },
   { year: 2011, company: 10, industryMedian: 12 },
   { year: 2012, company: 10, industryMedian: 12 },
   { year: 2013, company: 10, industryMedian: 12 },
