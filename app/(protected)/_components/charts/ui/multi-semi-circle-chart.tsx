@@ -47,6 +47,8 @@ const MultiSemiCircleChart = ({ data, config }: MultiSemiCircleChartProps) => {
             outerRadius={110}
             width={400}
             height={400}
+            startAngle={225}
+            endAngle={-47}
           >
             <ChartTooltip
               cursor={false}
