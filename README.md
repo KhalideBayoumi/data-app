@@ -21,6 +21,7 @@ Application web responsive pour Dataguru, permettant l'accès et la visualisatio
 - OAUth Google et Github
 - Gestion des rôles (user/admin)
 - Système de récupération de mot de passe
+- 2FA
 - Confirmation d'email par lien
 - Gestion des sessions et tokens
 - Pages sécurisées selon les rôles
@@ -141,3 +142,7 @@ Les thèmes Light et Dark sont configurables dans les paramètres utilisateur et
 
 ### Admin - Gestion utilisateurs (avec ajout)
 ![Screenshot](assets/images/img12.png)
+
+### Settings
+![Screenshot](assets/images/img14.png)
+![Screenshot](assets/images/img15.png)
