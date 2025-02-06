@@ -1,37 +1,142 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dataguru Frontend
 
-## Getting Started
+Application web responsive pour Dataguru, permettant l'accès et la visualisation des données d'entreprises.
 
-First, run the development server:
+## Technologies utilisées
+
+- **Framework** : Next.js
+- **Styles** : TailwindCSS & SCSS
+- **Authentification** : Auth.js avec OAuth
+- **Base de données** : PostgreSQL avec Prisma ORM
+- **Visualisation** : Recharts
+- **Internationalisation** : i18n
+- **Thème** : Light/Dark mode
+
+## Fonctionnalités principales
+
+### 1. Authentification & Sécurité
+
+- Système de connexion complet (email/mot de passe)
+- OAuth Provider intégré
+- OAUth Google et Github
+- Gestion des rôles (user/admin)
+- Système de récupération de mot de passe
+- Confirmation d'email par lien
+- Gestion des sessions et tokens
+- Pages sécurisées selon les rôles
+
+### 2. Compte Utilisateur
+
+#### Profile
+- Informations personnelles
+ - Prénom
+ - Nom
+ - Entreprise
+ - Email
+
+#### License
+- Type d'abonnement : Trial
+- Couverture géographique : Monde
+- Vues entreprises quotidiennes : Illimitées
+- Téléchargements quotidiens : Illimités
+
+### 3. Dashboard
+
+#### Interface principale
+- Responsive
+- Menu de navigation par onglets
+- Dropdown compte utilisateur
+- Toggle thème Light/Dark
+- Barre de recherche entreprises
+- Liste des entreprises disponibles (API) - Mocké pour le moment
+
+### 4. Administration
+
+Réservé aux administrateurs :
+- Gestion des utilisateurs
+ - Filtrage
+ - Tri
+ - Pagination
+- Modification des rôles utilisateurs
+
+### 5. Profil Entreprise
+
+#### Informations disponibles
+- Description générale
+- Informations principales
+- Ajustements principaux
+
+#### Onglets d'analyse
+- Snapshot
+- Historical Infos
+- Invisible Capital
+- Breakdown
+- Economic Life
+- Leadership
+- Point in Time
+
+#### Visualisation
+- Graphiques Recharts
+- Données mockées pour développement
+
+## Installation
 
 ```bash
+# Installation des dépendances
+npm install
+
+# Configuration de la base de données
+npx prisma generate
+npx prisma db push
+
+# Lancement en développement
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build production
+npm run build
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Thèmes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Les thèmes Light et Dark sont configurables dans les paramètres utilisateur et persistent via localStorage.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Sécurité
 
-## Learn More
+* Accès sécurisé à la base de données via Prisma
+* Routes protégées par authentification
+* Validation des données entrantes
+* Protection CSRF
+* Sessions sécurisées
 
-To learn more about Next.js, take a look at the following resources:
+## Aperçu
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Recherche d'entreprises
+![Screenshot](assets/images/img1.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Entreprise non enregistré
+![Screenshot](assets/images/img2.png)
 
-## Deploy on Vercel
+### Entreprise en attente
+![Screenshot](assets/images/img13.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Authentification
+![Screenshot](assets/images/img4.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# dataguru
+### Dashboard
+![Screenshot](assets/images/img5.png)
+
+![Screenshot](assets/images/img6.png)
+
+![Screenshot](assets/images/img7.png)
+
+![Screenshot](assets/images/img8.png)
+
+![Screenshot](assets/images/img9.png)
+
+![Screenshot](assets/images/img10.png)
+
+![Screenshot](assets/images/img11.png)
+
+### Admin - Gestion utilisateurs
+![Screenshot](assets/images/img12.png)
