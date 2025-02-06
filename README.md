@@ -121,6 +121,7 @@ Les thèmes Light et Dark sont configurables dans les paramètres utilisateur et
 ![Screenshot](assets/images/img13.png)
 
 ### Authentification
+![Screenshot](assets/images/img3.png)
 ![Screenshot](assets/images/img4.png)
 
 ### Dashboard
@@ -138,5 +139,5 @@ Les thèmes Light et Dark sont configurables dans les paramètres utilisateur et
 
 ![Screenshot](assets/images/img11.png)
 
-### Admin - Gestion utilisateurs
+### Admin - Gestion utilisateurs (avec ajout)
 ![Screenshot](assets/images/img12.png)
